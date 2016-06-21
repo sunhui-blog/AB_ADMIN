@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>A Click Event Test</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#div_test a").click(function(){
+                var link = $(this).attr('href');
+                $('#div_view').attr('src', link);
+                var href = window.location.href;
+                window.location.href = href.substr(0, href.indexOf('#')) + '#' + link;
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="div_test">
+    <ol>
+        <li><a href="http://xiaoxia.org">xiaoxia</a></li>
+        <li><a href="http://www.ibaiyang.org">ibaiyang</a></li>
+        <li><a href="http://www.xiaoxins.com">xiaoxins.com</a></li>
+    </ol>
+</div>
+<iframe id="div_view" width="100%"></iframe>
+</body>
+</html>
