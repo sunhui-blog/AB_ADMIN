@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="App">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="./css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="./css/bootstrap-table.css" rel="stylesheet"/>
-    <script src="./js/jquery.min.js" type="text/javascript"></script>
-    <script src="./js/bootstrap.js" type="text/javascript"></script>
-    <script src="./js/bootstrap-table.js" type="text/javascript"></script>
-    <script src="./js/policy.js" type="text/javascript"></script>
+    <title>AB_ADMIN</title>
+    <link href="../components/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../components/css/bootstrap-table.css" rel="stylesheet"/>
+    <script src="../components/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../components/js/bootstrap.js" type="text/javascript"></script>
+    <script src="../components/js/bootstrap-table.js" type="text/javascript"></script>
+    <script src="../components/js/angular.min.js" type="text/javascript"></script>
+    <script src="../components/js/angular-ui-router.min.js" type="text/javascript"></script>
+    <script src="../components/js/angular-breadcrumb.min.js" type="text/javascript"></script>
+    <script src="../components/js/ui-bootstrap-tpls.js" type="text/javascript"></script>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/policy.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/breadcrumb.js" type="text/javascript"></script>
 </head>
 <body>
-<div class="rcrumbs" id="breadcrumbs">
-    <ul>
-        <li><a href="#">Home</a><span class="divider">></span></li>
-        <li><a href="#">...</a><span class="divider">></span></li>
-        <li><a href="#">...</a><span class="divider">></span></li>
-    </ul>
-</div>
+<!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -68,28 +69,49 @@
         </div>
     </div>
 </nav>
-<!--<iframe></iframe>-->
-<div class="col-md-12" style="margin-top: 60px;">
-    <ol class="breadcrumb" style="margin-bottom: 10px;">
-        <li><a href="#">策略租</a></li>
-        <li class="active"><a href="#">策略</a></li>
-    </ol>
-
-    <div style="margin-bottom: 10px;">
-        <button type="button" class="btn btn-success" onclick="window.location='./tpl/add_policy.html'">增加</button>
-        <button type="button" class="btn btn-warning" >删除</button>
-    </div>
-
-    <table id="table" data-click-to-select="true">
-        <thead>
-        <tr>
-            <th data-field="type" data-align="right" data-sortable="true">type</th>
-            <th data-field="beta" data-align="center" data-sortable="true">beta</th>
-            <th data-field="start" data-sortable="true">start</th>
-            <th data-field="end" data-sortable="true">end</th>
-        </tr>
-        </thead>
-    </table>
+<!--nav-left-->
+<div class="col-md-2 nav-left"  role="navigation">
+    <ul class="nav nav-tabs nav-stacked navbar-btn">
+        <li class="active" data-toggle="collapse" data-target="#disk_list">
+            <a>
+                <i class="glyphicon glyphicon-th-large"></i>
+                策略组管理
+            </a>
+        </li>
+    </ul>
+    <ul class="nav nav-tabs nav-stacked navbar-btn collapse" id="disk_list">
+        <li  ui-sref=".all_Files">
+            <a href="#">
+                <i class="glyphicon glyphicon-th-large"></i>
+                策略组
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-header collapsed">
+                <i class="glyphicon glyphicon-cog"></i>
+                增加策略组
+            </a>
+        </li>
+    </ul>
+    <ul class="nav nav-tabs nav-stacked navbar-btn">
+        <li class="active" data-toggle="collapse" data-target="#file_list">
+            <a>
+                <i class="glyphicon glyphicon-th-large"></i>
+                策略管理
+            </a>
+        </li>
+    </ul>
+    <ul class="nav nav-tabs nav-stacked navbar-btn collapse" id="file_list">
+        <li>
+            <a href="#" ui-sref=".file_Transfer" class="nav-header collapsed" data-toggle="collapse">
+                <i class="glyphicon glyphicon-cog"></i>
+                策略
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="content-right col-md-10" style="margin-top: 50px;" >
+    <div  ui-view=""></div>
 </div>
 
 </body>
